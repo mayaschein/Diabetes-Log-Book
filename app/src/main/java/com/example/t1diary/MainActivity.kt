@@ -103,6 +103,8 @@ fun AddMealScreen(innerPadding: PaddingValues, navController: NavHostController)
     }
 }
 
+class meal(val name: String, val carbs: Int) 
+
 
 
 
