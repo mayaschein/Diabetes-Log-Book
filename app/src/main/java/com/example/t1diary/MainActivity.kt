@@ -40,7 +40,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
-            Scaffold( //basic layout
+            //basic layout
+            Scaffold(
                 topBar = {
                     TopAppBar(
                         title = { Text("T1Diary")},
@@ -59,13 +60,14 @@ class MainActivity : ComponentActivity() {
                     )
                 }
             ) { innerPadding ->
-                NavHost( // navigation thingie
+                // navigation
+                NavHost(
                     navController = navController,
                     startDestination = "home",
                     modifier = Modifier.padding(innerPadding)
                 ) { // navigation tree
                     composable("home") { HomeScreen(innerPadding, navController) }
-                    composable("addMeal") { AddMealScreen(innerPadding, navController)}
+                    composable("addFood") { AddFoodScreen(innerPadding, navController)}
                 }
             }
         }
@@ -81,16 +83,16 @@ fun HomeScreen(innerPadding: PaddingValues, navController: NavHostController){
             .padding(16.dp)
     ){
         Button(onClick = {
-            navController.navigate("addMeal")
+            navController.navigate("addFood")
         }) {
-            Text("Add Meal")
+            Text("Add Food")
         }
     }
 
 }
 
 @Composable
-fun AddMealScreen(innerPadding: PaddingValues, navController: NavHostController) {
+fun AddFoodScreen(innerPadding: PaddingValues, navController: NavHostController) {
     Box(
         modifier = Modifier
             .padding(innerPadding)
@@ -99,12 +101,11 @@ fun AddMealScreen(innerPadding: PaddingValues, navController: NavHostController)
             .padding(16.dp),
         contentAlignment = Alignment.Center
     ){
-        Text("Add Meal")
+        Text("Add Food")
     }
 }
 
-class meal(val name: String, val carbs: Int) 
-
+//
 
 
 
